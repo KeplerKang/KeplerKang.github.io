@@ -1,7 +1,7 @@
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>设计师作品集 | Ada Wang</title>
+    <title>学术主页 | Kepler Kang</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -58,6 +58,42 @@
     </style>
     
     <style>
+        /* 背景图片样式 */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://p3-doubao-search-sign.byteimg.com/labis/518e505d76f2f082899c1d43544d0b76~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1780234034&x-signature=mTZ%2B5n%2FrEKFClDrbnxgabcpord8%3D');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        /* 点击特效样式 */
+        .click-effect {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066ff;
+            pointer-events: none;
+            z-index: 1000;
+            animation: float-up 1.5s ease-out forwards;
+        }
+        
+        @keyframes float-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+        
         /* 自定义滚动区域的自定义滚动条 */
         ::-webkit-scrollbar {
             width: 8px;
@@ -110,16 +146,21 @@
         }
     </style>
 </head>
-<body class="bg-white text-primary font-sans">
+<body class="bg-white text-primary font-sans relative">
+    <!-- 背景图片 -->
+    <div class="bg-image"></div>
+    <div class="bg-image"></div>
+    
     <!-- 导航栏 -->
     <nav id="navbar" class="navbar-fixed bg-white bg-opacity-95 nav-shadow py-4">
         <div class="container mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center">
-                <a href="home.html" class="text-2xl font-bold text-primary">Ada Wang</a>
+                <a href="home.html" class="text-2xl font-bold text-primary">Kepler Kang</a>
                 
                 <!-- 桌面导航 -->
                 <div class="hidden md:flex ml-auto space-x-8">
                     <a href="home.html" class="text-secondary hover:text-accent transition-colors">Home</a>
+                    <a href="blogs.html" class="text-secondary hover:text-accent transition-colors">Blogs</a>
                     <a href="works.html" class="text-secondary hover:text-accent transition-colors">Works</a>
                     <a href="about.html" class="text-secondary hover:text-accent transition-colors">About</a>
                     <a href="contact.html" class="text-secondary hover:text-accent transition-colors">Contact</a>
@@ -136,6 +177,7 @@
         <div id="mobile-menu" class="md:hidden bg-white hidden absolute top-full left-0 w-full border-t border-gray-100">
             <div class="container mx-auto px-4 py-4">
                 <a href="home.html" class="block py-2 text-secondary hover:text-accent">Home</a>
+                <a href="blogs.html" class="block py-2 text-secondary hover:text-accent">Blogs</a>
                 <a href="works.html" class="block py-2 text-secondary hover:text-accent">Works</a>
                 <a href="about.html" class="block py-2 text-secondary hover:text-accent">About</a>
                 <a href="contact.html" class="block py-2 text-secondary hover:text-accent">Contact</a>
@@ -149,17 +191,17 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
                 <!-- 左侧文字内容 -->
                 <div class="max-w-3xl md:w-1/2">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Hi, I'm Ada Wang 👋</h1>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Hi, I'm Kepler Kang 👋</h1>
                     <p class="text-xl md:text-2xl text-gray-600 mb-8">
-                        A designer crafting digital experiences at the intersection of design and technology.
+                        Researcher focused on computer vision and machine learning.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="works.html" class="px-8 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition duration-300">
-                            View My Work
-                        </a>
-                        <a href="about.html" class="px-8 py-3 border border-gray-300 text-black font-medium rounded-md hover:bg-gray-100 transition duration-300">
-                            About Me
-                        </a>
+                        <button id="like-btn" class="px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-bold rounded-md hover:from-pink-700 hover:to-rose-700 transition duration-300 flex items-center shadow-xl z-50 text-lg relative">
+                            <i class="fa fa-heart mr-2"></i> Follow <span id="like-count" class="ml-2">0</span>
+                        </button>
+                        <button id="comment-btn" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-md hover:from-blue-700 hover:to-cyan-700 transition duration-300 flex items-center shadow-xl z-50 text-lg relative">
+                            <i class="fa fa-comment mr-2"></i> Comment <span id="comment-count" class="ml-2">0</span>
+                        </button>
                     </div>
                 </div>
                 
@@ -174,83 +216,15 @@
     </section>
 
     <!-- 最新作品预览 -->
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">Latest Works</h2>
-            
-            <!-- 作品网格 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 作品1 -->
-                <div class="work-card bg-white rounded-lg overflow-hidden shadow-sm group" data-category="UI/UX">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/29449b1a007b4221921bce21be1e4dd2~tplv-a9rns2rl98-image.image?rcl=20251013163918FB6EAC6B654496E25F85&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760949563&amp;x-signature=B6ka6pttP6CFMPh%2FXj8k6xP63i4%3D" alt="Mobile App UI Design" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span class="px-4 py-2 bg-white text-black text-sm font-medium rounded-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Millmane App UI</h3>
-                        <p class="text-gray-600 text-sm mb-4">Modern mobile application interface design with clean aesthetic and intuitive user experience.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="px-4 py-2 bg-gray-100 rounded-full text-sm">UI/UX Design</div>
-                            <a href="works/work1.html" class="text-accent text-sm font-medium hover:underline">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品2 -->
-                <div class="work-card bg-white rounded-lg overflow-hidden shadow-sm group" data-category="Web Design">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/520c2cb70ce74a5e873ecc213be07d49~tplv-a9rns2rl98-image.image?rcl=20251013162436B2ED504F4E124AF921CD&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760948681&amp;x-signature=mHPZrZeJjztdaF94jLEBa09ZNyE%3D" alt="Modern Website Design" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span class="px-4 py-2 bg-white text-black text-sm font-medium rounded-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Oitcut Website</h3>
-                        <p class="text-gray-600 text-sm mb-4">Light theme website with modern typography and interactive elements.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="px-4 py-2 bg-gray-100 rounded-full text-sm">Web Design</div>
-                            <a href="works/work2.html" class="text-accent text-sm font-medium hover:underline">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品3 -->
-                <div class="work-card bg-white rounded-lg overflow-hidden shadow-sm group" data-category="Branding">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/574e47a1407b482b836e9e65afe0a269~tplv-a9rns2rl98-image.image?rcl=20251013163305F8CF0626CD00FB1D6A39&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760949190&amp;x-signature=JUmkfR89C%2FLnKtiIouqP61rG%2FeE%3D" alt="Branding Design" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span class="px-4 py-2 bg-white text-black text-sm font-medium rounded-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Earphone Product Branding</h3>
-                        <p class="text-gray-600 text-sm mb-4">Elegant branding design with gold foil finish on black background.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="px-4 py-2 bg-gray-100 rounded-full text-sm">Branding</div>
-                            <a href="works/work3.html" class="text-accent text-sm font-medium hover:underline">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 查看更多按钮 -->
-            <div class="text-center mt-12">
-                <a href="works.html" class="inline-flex items-center px-8 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition duration-300">
-                    View All Works
-                </a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- 页脚 -->
     <footer class="py-12 bg-black text-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold">Ada Wang</h3>
-                    <p class="text-gray-400 mt-2">A designer crafting digital experiences.</p>
+                    <h3 class="text-2xl font-bold">Kepler Kang</h3>
+                    <p class="text-gray-400 mt-2">Computer Vision Researcher.</p>
                 </div>
                 
                 <div class="flex space-x-6">
@@ -283,6 +257,34 @@
     <script>
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
+            // 点击特效功能
+            const achievements = ['CVPR+1', 'ICCV+1', 'ECCV+1', 'NeurIPS+1', 'ICML+1', 'ACL+1', 'AAAI+1', 'IJCAI+1'];
+            
+            document.addEventListener('click', function(e) {
+                // 排除点击在导航栏和按钮上的情况
+                if (e.target.closest('nav') || e.target.closest('a')) {
+                    return;
+                }
+                
+                const effect = document.createElement('div');
+                effect.classList.add('click-effect');
+                
+                // 随机选择一个成就
+                const randomAchievement = achievements[Math.floor(Math.random() * achievements.length)];
+                effect.textContent = randomAchievement;
+                
+                // 设置位置
+                effect.style.left = e.clientX + 'px';
+                effect.style.top = e.clientY + 'px';
+                
+                // 添加到页面
+                document.body.appendChild(effect);
+                
+                // 动画结束后移除
+                setTimeout(() => {
+                    effect.remove();
+                }, 1500);
+            });
             // 移动端菜单切换
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -340,12 +342,13 @@
                     delay: 0.5
                 });
                 
-                gsap.from('section:first-of-type .flex', {
-                    opacity: 0,
-                    y: 20,
-                    duration: 1,
-                    delay: 0.8
-                });
+                // 不使用GSAP动画按钮，避免按钮变淡
+                // gsap.from('section:first-of-type .flex', {
+                //     opacity: 0,
+                //     y: 20,
+                //     duration: 1,
+                //     delay: 0.8
+                // });
                 
                 gsap.from('section:first-of-type img', {
                     opacity: 0,
@@ -371,6 +374,82 @@
             }
         });
         
+        // 点赞和评论功能
+        const likeBtn = document.getElementById('like-btn');
+        const likeCount = document.getElementById('like-count');
+        const commentBtn = document.getElementById('comment-btn');
+        const commentCount = document.getElementById('comment-count');
+        
+        // 从localStorage加载数据
+        let likes = localStorage.getItem('keplerLikes') ? parseInt(localStorage.getItem('keplerLikes')) : 0;
+        let comments = localStorage.getItem('keplerComments') ? parseInt(localStorage.getItem('keplerComments')) : 0;
+        
+        // 初始化显示
+        likeCount.textContent = likes;
+        commentCount.textContent = comments;
+        
+        likeBtn.addEventListener('click', function() {
+            likes++;
+            likeCount.textContent = likes;
+            localStorage.setItem('keplerLikes', likes);
+            
+            // 添加点击动画效果
+            likeBtn.classList.add('scale-110');
+            likeBtn.classList.add('animate-pulse');
+            setTimeout(() => {
+                likeBtn.classList.remove('scale-110');
+                likeBtn.classList.remove('animate-pulse');
+            }, 300);
+            
+            // 添加心形粒子效果
+            createHeartParticles(event);
+        });
+        
+        commentBtn.addEventListener('click', function() {
+            // 打开评论页面
+            window.open('comments.html', '_blank', 'width=600,height=500');
+        });
+        
+        // 创建心形粒子效果
+        function createHeartParticles(event) {
+            const heartEmojis = ['❤️', '💕', '💖', '💗', '💓'];
+            const btnRect = likeBtn.getBoundingClientRect();
+            const centerX = btnRect.left + btnRect.width / 2;
+            const centerY = btnRect.top + btnRect.height / 2;
+            
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                particle.style.position = 'fixed';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.fontSize = '20px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                particle.style.transform = 'translate(-50%, -50%)';
+                
+                // 随机角度和距离
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 50 + Math.random() * 50;
+                const finalX = centerX + Math.cos(angle) * distance;
+                const finalY = centerY + Math.sin(angle) * distance;
+                
+                document.body.appendChild(particle);
+                
+                // 动画
+                particle.animate([
+                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+                    { transform: `translate(${finalX - centerX}px, ${finalY - centerY}px) scale(1)`, opacity: 0.8 },
+                    { transform: `translate(${finalX - centerX}px, ${finalY - centerY - 30}px) scale(0.5)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }).onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+        
         // 回到顶部按钮
         const backToTopButton = document.getElementById('back-to-top');
         
@@ -389,7 +468,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
         });
     </script>
 
