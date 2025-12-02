@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Like Function</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="p-8">
+        <button id="test-like-btn" class="px-8 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-medium rounded-md">
+            <i class="fa fa-heart mr-2"></i> Follow <span id="test-like-count" class="ml-2">0</span>
+        </button>
+        <p class="mt-4">Current likes in localStorage: <span id="current-likes"></span></p>
+        <button id="clear-likes" class="mt-4 px-4 py-2 bg-gray-200 rounded">Clear Likes</button>
+    </div>
+
+    <script>
+        // 测试点赞功能
+        const testLikeBtn = document.getElementById('test-like-btn');
+        const testLikeCount = document.getElementById('test-like-count');
+        const currentLikesDisplay = document.getElementById('current-likes');
+        const clearLikesBtn = document.getElementById('clear-likes');
+        
+        // 从localStorage加载数据
+        let likes = localStorage.getItem('keplerLikes') ? parseInt(localStorage.getItem('keplerLikes')) : 0;
+        
+        // 初始化显示
+        testLikeCount.textContent = likes;
+        currentLikesDisplay.textContent = likes;
+        
+        // 点赞按钮点击事件
+        testLikeBtn.addEventListener('click', function() {
+            likes++;
+            testLikeCount.textContent = likes;
+            localStorage.setItem('keplerLikes', likes);
+            currentLikesDisplay.textContent = likes;
+            
+            // 添加点击动画效果
+            testLikeBtn.classList.add('scale-110');
+            setTimeout(() => {
+                testLikeBtn.classList.remove('scale-110');
+            }, 200);
+        });
+        
+        // 清除点赞按钮
+        clearLikesBtn.addEventListener('click', function() {
+            localStorage.removeItem('keplerLikes');
+            likes = 0;
+            testLikeCount.textContent = likes;
+            currentLikesDisplay.textContent = likes;
+        });
+    </script>
+</body>
+</html>
