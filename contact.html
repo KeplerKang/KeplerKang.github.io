@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ada Wang | Contact</title>
+    <title>Kepler Kang | Contact</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -82,16 +82,37 @@
             box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
         }
     </style>
+
+    <style>
+        /* 背景图片样式 */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://p3-doubao-search-sign.byteimg.com/labis/518e505d76f2f082899c1d43544d0b76~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1780234034&x-signature=mTZ%2B5n%2FrEKFClDrbnxgabcpord8%3D');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body class="font-sans bg-white text-primary antialiased">
+    <!-- 背景图片 -->
+    <div class="bg-image"></div>
+    <div class="bg-image"></div>
+
     <!-- 导航栏 -->
     <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="home.html" class="text-2xl font-bold tracking-tight">Ada<span class="text-accent">Wang</span></a>
+            <a href="home.html" class="text-2xl font-bold tracking-tight">Kepler <span class="text-accent">Kang</span></a>
             
             <!-- 桌面导航 -->
             <div class="hidden md:flex space-x-8">
                 <a href="home.html" class="nav-link text-primary hover:text-accent transition-colors">Home</a>
+                <a href="blogs.html" class="nav-link text-primary hover:text-accent transition-colors">Blog</a>
                 <a href="works.html" class="nav-link text-primary hover:text-accent transition-colors">Work</a>
                 <a href="about.html" class="nav-link text-primary hover:text-accent transition-colors">About</a>
                 <a href="contact.html" class="nav-link text-accent font-medium transition-colors">Contact</a>
@@ -107,6 +128,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
             <div class="container mx-auto px-4 py-2">
                 <a href="home.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Home</a>
+                <a href="blogs.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Blog</a>
                 <a href="works.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Work</a>
                 <a href="about.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">About</a>
                 <a href="contact.html" class="mobile-nav-link block py-3 text-accent font-medium transition-colors">Contact</a>
@@ -226,17 +248,17 @@
     </section>
 
     <!-- 地图 -->
-    <section id="map" class="h-96 bg-gray-200">
+    <!-- <section id="map" class="h-96 bg-gray-200"> -->
         <!-- 这里可以嵌入地图，或者使用一个简单的背景图 -->
-        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://picsum.photos/id/1016/1600/900');"></div>
-    </section>
+        <!-- <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://picsum.photos/id/1016/1600/900');"></div> -->
+    <!-- </section> -->
 
     <!-- 页脚 -->
     <footer class="bg-dark text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="home.html" class="text-2xl font-bold tracking-tight">Ada<span class="text-accent">Wang</span></a>
+                    <a href="home.html" class="text-2xl font-bold tracking-tight">Kepler <span class="text-accent">Kang</span></a>
                     <p class="text-gray-400 mt-2">Creative Developer & Designer</p>
                 </div>
                 
@@ -262,6 +284,7 @@
                 <div class="mt-4 md:mt-0">
                     <ul class="flex space-x-6 text-sm">
                         <li><a href="about.html" class="text-gray-400 hover:text-accent transition-colors">About</a></li>
+                        <li><a href="blogs.html" class="text-gray-400 hover:text-accent transition-colors">Blog</a></li>
                         <li><a href="works.html" class="text-gray-400 hover:text-accent transition-colors">Work</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
                     </ul>

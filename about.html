@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeplerKang | About</title>
+    <title>Kepler Kang | About</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -85,16 +85,37 @@
             opacity: 1;
         }
     </style>
+
+    <style>
+        /* 背景图片样式 */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://p3-doubao-search-sign.byteimg.com/labis/518e505d76f2f082899c1d43544d0b76~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1780234034&x-signature=mTZ%2B5n%2FrEKFClDrbnxgabcpord8%3D');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body class="font-sans bg-white text-primary antialiased">
+    <!-- 背景图片 -->
+    <div class="bg-image"></div>
+    <div class="bg-image"></div>
+
     <!-- 导航栏 -->
     <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="home.html" class="text-2xl font-bold tracking-tight">Ada<span class="text-accent">Wang</span></a>
+            <a href="home.html" class="text-2xl font-bold tracking-tight">Kepler <span class="text-accent">Kang</span></a>
             
             <!-- 桌面导航 -->
             <div class="hidden md:flex space-x-8">
                 <a href="home.html" class="nav-link text-primary hover:text-accent transition-colors">Home</a>
+                <a href="blogs.html" class="nav-link text-primary hover:text-accent transition-colors">Blog</a>
                 <a href="works.html" class="nav-link text-primary hover:text-accent transition-colors">Work</a>
                 <a href="about.html" class="nav-link text-accent font-medium transition-colors">About</a>
                 <a href="contact.html" class="nav-link text-primary hover:text-accent transition-colors">Contact</a>
@@ -110,6 +131,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
             <div class="container mx-auto px-4 py-2">
                 <a href="home.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Home</a>
+                <a href="blogs.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Blog</a>
                 <a href="works.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Work</a>
                 <a href="about.html" class="mobile-nav-link block py-3 text-accent font-medium transition-colors">About</a>
                 <a href="contact.html" class="mobile-nav-link block py-3 text-primary hover:text-accent transition-colors">Contact</a>
@@ -135,7 +157,7 @@
                     <div class="aspect-square max-w-md mx-auto md:mx-0 rounded-sm overflow-hidden">
                         <img 
                             src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/2124a30500774d22a3144878ee49c4a9~tplv-a9rns2rl98-image.image?rcl=20251011164649D4BA127678F85C1FA961&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760777214&amp;x-signature=9RpGVYF64DuKmzjPSaZJGuZu2i4%3D" 
-                            alt="Ada Wang" 
+                            alt="Kepler Kang" 
                             class="w-full h-full object-cover lazy-image"
                             loading="lazy"
                         >
@@ -143,7 +165,7 @@
                 </div>
                 
                 <div>
-                    <h2 class="section-title">Ada Wang</h2>
+                    <h2 class="section-title">Kepler Kang</h2>
                     <h3 class="text-2xl font-bold mb-6">UI/UX Designer & Product Designer</h3>
                     <p class="text-secondary mb-6 leading-relaxed">
                         I'm a passionate designer with over 5 years of experience creating digital experiences that blend aesthetics with functionality. My work focuses on user-centered design principles, ensuring that every project I undertake delivers value to both users and businesses.
@@ -175,7 +197,7 @@
     </section>
 
     <!-- 技能 -->
-    <section id="skills" class="section-padding bg-light">
+    <section id="skills" class="section-padding">
         <div class="container mx-auto px-4">
             <h2 class="section-title">Skills</h2>
             
@@ -381,7 +403,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="home.html" class="text-2xl font-bold tracking-tight">Kepler<span class="text-accent">Kang</span></a>
+                    <a href="home.html" class="text-2xl font-bold tracking-tight">Kepler <span class="text-accent">Kang</span></a>
                     <p class="text-gray-400 mt-2">A designer crafting digital experiences.</p>
                 </div>
                 
@@ -407,6 +429,7 @@
                 <div class="mt-4 md:mt-0">
                     <ul class="flex space-x-6 text-sm">
                         <li><a href="about.html" class="text-gray-400 hover:text-accent transition-colors">About</a></li>
+                        <li><a href="blogs.html" class="text-gray-400 hover:text-accent transition-colors">Blog</a></li>
                         <li><a href="works.html" class="text-gray-400 hover:text-accent transition-colors">Work</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
                     </ul>
